@@ -1,1 +1,48 @@
 ﻿@import "tailwindcss";
+
+/* Enable class-based dark mode for Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #f8fafc;
+    color: #1e293b;
+  }
+  .dark body {
+    background: #020617;
+    color: #e2e8f0;
+  }
+  ::selection {
+    background: #fed7aa;
+    color: #7c2d12;
+  }
+}
+
+/* ── Toast ── */
+@keyframes toastIn {
+  0%   { opacity: 0; transform: translateY(-8px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-toast { animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* ── Staggered card entrance ── */
+@keyframes cardIn {
+  0%   { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-card { animation: cardIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* ── shimmer for the login panel ── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* input focus glow */
+input:focus, select:focus, textarea:focus {
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.1);
+}

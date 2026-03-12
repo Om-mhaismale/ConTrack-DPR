@@ -1,251 +1,117 @@
-﻿# 🚧 ConTrack-DPR
-### Construction Field Management Web App
+﻿# ConTrack DPR
 
-![React](https://img.shields.io/badge/React-18-blue?logo=react)
-![Vite](https://img.shields.io/badge/Vite-Build_Tool-purple?logo=vite)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-Styling-38BDF8?logo=tailwindcss)
-![React Router](https://img.shields.io/badge/React_Router-v6-red?logo=reactrouter)
-![Status](https://img.shields.io/badge/Status-Frontend_Task-success)
+**Construction Field Management Web App** — submit and track Daily Progress Reports from any device.
 
-A **modern responsive web application** built using **React.js** that simulates a **Construction Field Management System**.
-
-ConTrack-DPR helps teams manage projects and submit **Daily Progress Reports (DPR)** efficiently from **mobile, tablet, or desktop devices**.
+![React](https://img.shields.io/badge/React-19-blue?logo=react)
+![Vite](https://img.shields.io/badge/Vite-7-purple?logo=vite)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-38BDF8?logo=tailwindcss)
+![React Router](https://img.shields.io/badge/React_Router-7-red?logo=reactrouter)
 
 ---
 
-# ✨ Features
+## Features
 
-### 🔐 Login Authentication
-Secure mock login system with validation.
+| Feature | Details |
+|---|---|
+| **Login** | Mock auth with email + password validation |
+| **Project Dashboard** | Card grid with status filter (All / In Progress / Pending / Completed) |
+| **DPR Form** | Project, date, weather, description, worker count, photo upload (1–3 images) |
+| **Dark Mode** | Toggle via navbar — persisted in `localStorage` |
+| **Validation** | Descriptive field-level error messages on all forms |
+| **Responsive** | Mobile-first, works on 375 px → 1440 px+ |
+| **Animations** | Staggered card entrance, hover micro-interactions |
 
-Test Credentials:
+---
+
+## Demo credentials
 
 ```
-Email: test@test.com
+Email:    test@test.com
 Password: 123456
 ```
 
-Features:
-- Email validation
-- Error messages for incorrect login
-- Redirect to project dashboard on success
-
 ---
 
-### 📁 Project List Dashboard
+## Quick start
 
-View all construction projects in a **clean card-based UI**.
-
-Each project displays:
-
-- 🏗 Project Name  
-- 🟢 Status Badge  
-- 📅 Start Date  
-- 📍 Location  
-
-Features:
-
-- Click any project to open the **DPR Form**
-- Responsive card layout
-- Optional project status filter
-
----
-
-### 📝 Daily Progress Report (DPR) Form
-
-Submit field updates directly from the app.
-
-Form Fields:
-
-- Project Selection (Dropdown)
-- Date Picker
-- Weather Selection  
-  - ☀ Sunny  
-  - ☁ Cloudy  
-  - 🌧 Rainy
-- Work Description (Textarea)
-- Worker Count (Number Input)
-- Photo Upload (1–3 images)
-
-Features:
-
-- Image preview thumbnails
-- Form validation
-- Success confirmation
-- Navigation back to Project List
-
----
-
-# 📱 Responsive Design
-
-The UI follows a **mobile-first approach** and adapts seamlessly across devices.
-
-| Device | Screen Width |
-|------|------|
-| 📱 Mobile | 375px |
-| 📟 Tablet | 768px |
-| 💻 Desktop | 1280px+ |
-
-✔ No horizontal scrolling  
-✔ Clean spacing and layout  
-✔ Smooth responsive transitions
-
----
-
-# 🛠 Tech Stack
-
-| Technology | Purpose |
-|------|------|
-| React.js | Frontend framework |
-| Vite | Fast build tool |
-| React Router v6 | Page routing |
-| Tailwind CSS | Styling |
-| Axios / Fetch API | Data fetching |
-| React Hooks | State management |
-
----
-
-# 📂 Project Structure
-
-```
-ConTrack-DPR
-│
-├── src
-│   ├── components
-│   │   ├── ProjectCard.jsx
-│   │   └── ImageUpload.jsx
-│   │
-│   ├── pages
-│   │   ├── Login.jsx
-│   │   ├── ProjectList.jsx
-│   │   └── DPRForm.jsx
-│   │
-│   ├── constants
-│   │   └── projects.js
-│   │
-│   ├── utils
-│   │   └── validation.js
-│   │
-│   ├── App.jsx
-│   └── main.jsx
-│
-└── README.md
-```
-
-The structure separates **pages, components, constants, and utilities** for maintainable and scalable code.
-
----
-
-# ⚙️ Installation & Setup
-
-### 1️⃣ Clone the Repository
+### 1. Clone
 
 ```bash
 git clone https://github.com/your-username/ConTrack-DPR.git
-```
-
----
-
-### 2️⃣ Navigate into the Project
-
-```bash
 cd ConTrack-DPR
 ```
 
----
-
-### 3️⃣ Install Dependencies
+### 2. Install dependencies
 
 ```bash
 npm install
 ```
 
----
-
-### 4️⃣ Run Development Server
+### 3. Start dev server
 
 ```bash
 npm run dev
 ```
 
-App will run at:
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### Other commands
+
+| Command | Purpose |
+|---|---|
+| `npm run build` | Production bundle in `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
+
+---
+
+## Project structure
 
 ```
-http://localhost:5173
+src/
+├── assets/             # Static assets (logo, etc.)
+├── components/
+│   ├── Navbar.jsx      # Top nav with dark mode toggle + logout
+│   └── ProtectedRoute.jsx
+├── constants/
+│   └── projects.js     # Project data, statusConfig, weatherOptions
+├── context/
+│   ├── AuthContext.jsx  # Login / logout state
+│   └── ThemeContext.jsx # Dark mode toggle (persisted)
+├── pages/
+│   ├── Login.jsx        # Auth screen
+│   ├── ProjectList.jsx  # Dashboard with project cards + filter
+│   └── DPRForm.jsx      # Daily progress report form
+├── utils/
+│   └── validation.js   # validateLogin, validateDPRForm
+├── App.jsx             # Route definitions
+├── index.css           # Tailwind v4 imports + dark variant
+└── main.jsx
 ```
 
 ---
 
-# ✅ Implemented Features
+## Tech stack
 
-✔ Login Screen  
-✔ Project List Dashboard  
-✔ DPR Submission Form  
-✔ Image Upload with Preview  
-✔ Client-Side Routing  
-✔ Responsive UI  
-✔ Form Validation
-
----
-
-# ⭐ Bonus Features (Optional)
-
-- Dark Mode Toggle
-- Project Status Filter
-- Smooth UI Animations
-- Deployment on Vercel / Netlify
+| Library | Version | Purpose |
+|---|---|---|
+| React | 19 | UI framework |
+| Vite | 7 | Build tool |
+| Tailwind CSS | 4 | Utility-first styling |
+| React Router | 7 | Client-side routing |
+| Lucide React | latest | Icon set |
 
 ---
 
-# ⚠ Known Limitations
+## Known limitations
 
-- Authentication is **mock-based**
-- DPR submissions are **not stored in a database**
-- Image uploads are **preview only**
-
----
-
-# 🌍 Deployment
-
-Live Demo (Optional)
-
-```
-https://your-project.vercel.app
-```
+- Authentication is **mock-based** (no real backend)
+- DPR submissions are **not persisted** (no database)
+- Image uploads generate **local object URLs** — preview only
 
 ---
 
-# 🎥 Video Walkthrough
-
-5–10 minute explanation of the implementation.
-
-Add your video link here:
-
-```
-Loom / YouTube Link
-```
-
----
-
-# 📩 Submission
-
-**Deadline:**  
-13th March 2026 — 12:00 PM
-
-Submit the following:
-
-- GitHub Repository Link
-- Video Walkthrough
-
-Send to:
-
-```
-contact@getflytechnologies.com
-```
-
----
-
-# 👨‍💻 Author
+## Author
 
 **Om Mhaismale**
 

@@ -36,10 +36,10 @@ export const projects = [
   },
 ];
 
-export const statusColors = {
-  Progress: 'bg-blue-100 text-blue-700',
-  Pending: 'bg-yellow-100 text-yellow-700',
-  Done: 'bg-green-100 text-green-700',
+export const statusConfig = {
+  Progress: { label: 'In Progress', bg: 'bg-sky-50', text: 'text-sky-700', dot: 'bg-sky-500', border: 'border-l-sky-500' },
+  Pending:  { label: 'Pending',     bg: 'bg-amber-50', text: 'text-amber-700', dot: 'bg-amber-500', border: 'border-l-amber-500' },
+  Done:     { label: 'Completed',   bg: 'bg-emerald-50', text: 'text-emerald-700', dot: 'bg-emerald-500', border: 'border-l-emerald-500' },
 };
 
 export const weatherOptions = ['Sunny', 'Cloudy', 'Rainy'];
