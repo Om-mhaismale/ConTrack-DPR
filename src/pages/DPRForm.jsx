@@ -1,13 +1,16 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Upload, X, CheckCircle } from 'lucide-react';
+import { Upload, X, CheckCircle, ArrowLeft } from 'lucide-react';
 import Navbar from '../components/Navbar';
+import { projects, weatherOptions } from '../constants/projects';
+import { validateDPRForm } from '../utils/validation';
 
 export default function DPRForm() {
   const { projectId } = useParams();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
+    project: projectId || '',
     date: '',
     weather: '',
     description: '',
@@ -16,6 +19,8 @@ export default function DPRForm() {
   const [images, setImages] = useState([]);
   const [errors, setErrors] = useState({});
   const [toast, setToast] = useState(false);
+
+  const selectedProject = projects.find((p) => String(p.id) === String(formData.project));
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,26 +56,14 @@ export default function DPRForm() {
     });
   };
 
-  const validate = () => {
-    const newErrors = {};
-    if (!formData.date) newErrors.date = 'Date is required';
-    if (!formData.weather) newErrors.weather = 'Weather is required';
-    if (!formData.description.trim()) newErrors.description = 'Work description is required';
-    if (!formData.workerCount || Number(formData.workerCount) < 1)
-      newErrors.workerCount = 'Enter a valid worker count';
-    if (images.length === 0) newErrors.images = 'Upload at least 1 image';
-    return newErrors;
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validationErrors = validate();
+    const validationErrors = validateDPRForm(formData, images.length);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
 
-    // Show success toast and redirect
     setToast(true);
     setTimeout(() => {
       images.forEach((img) => URL.revokeObjectURL(img.url));
@@ -82,19 +75,52 @@ export default function DPRForm() {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
 
-      {/* Success Toast */}
       {toast && (
-        <div className="fixed top-4 right-4 z-50 bg-green-600 text-white px-5 py-3 rounded-lg shadow-lg flex items-center gap-2 animate-fade-in">
+        <div className="fixed top-4 right-4 z-50 bg-green-600 text-white px-5 py-3 rounded-lg shadow-lg flex items-center gap-2">
           <CheckCircle className="w-5 h-5" />
           DPR submitted successfully!
         </div>
       )}
 
       <main className="max-w-2xl mx-auto px-4 py-8">
+        <button
+          onClick={() => navigate('/projects')}
+          className="flex items-center gap-1 text-sm text-gray-500 hover:text-orange-600 mb-4 transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Projects
+        </button>
+
         <h1 className="text-2xl font-bold text-gray-800 mb-1">Daily Progress Report</h1>
-        <p className="text-sm text-gray-500 mb-6">Project #{projectId}</p>
+        {selectedProject && (
+          <p className="text-sm text-gray-500 mb-6">{selectedProject.name}</p>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Project Dropdown */}
+          <div>
+            <label htmlFor="project" className="block text-sm font-medium text-gray-700 mb-1">
+              Project
+            </label>
+            <select
+              id="project"
+              name="project"
+              value={formData.project}
+              onChange={handleChange}
+              className={`w-full border rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-orange-500 bg-white ${
+                errors.project ? 'border-red-400' : 'border-gray-300'
+              }`}
+            >
+              <option value="">Select a project</option>
+              {projects.map((p) => (
+                <option key={p.id} value={p.id}>
+                  {p.name}
+                </option>
+              ))}
+            </select>
+            {errors.project && <p className="text-red-500 text-xs mt-1">{errors.project}</p>}
+          </div>
+
           {/* Date */}
           <div>
             <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">
@@ -128,9 +154,9 @@ export default function DPRForm() {
               }`}
             >
               <option value="">Select weather</option>
-              <option value="Sunny">Sunny</option>
-              <option value="Cloudy">Cloudy</option>
-              <option value="Rainy">Rainy</option>
+              {weatherOptions.map((w) => (
+                <option key={w} value={w}>{w}</option>
+              ))}
             </select>
             {errors.weather && <p className="text-red-500 text-xs mt-1">{errors.weather}</p>}
           </div>
@@ -181,7 +207,7 @@ export default function DPRForm() {
           {/* Image Upload */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Site Images (1–3)
+              Site Images (1-3)
             </label>
             <label
               className={`flex flex-col items-center justify-center w-full h-28 border-2 border-dashed rounded-lg cursor-pointer transition-colors ${
@@ -204,7 +230,6 @@ export default function DPRForm() {
             </label>
             {errors.images && <p className="text-red-500 text-xs mt-1">{errors.images}</p>}
 
-            {/* Thumbnail Previews */}
             {images.length > 0 && (
               <div className="flex gap-3 mt-3">
                 {images.map((img, index) => (
@@ -227,7 +252,7 @@ export default function DPRForm() {
             )}
           </div>
 
-          {/* Submit Button */}
+          {/* Submit */}
           <button
             type="submit"
             className="w-full bg-orange-600 hover:bg-orange-700 text-white font-medium py-2.5 rounded-lg transition-colors"
