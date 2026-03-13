@@ -1,6 +1,6 @@
-﻿# ConTrack DPR
+# 🚧 ConTrack DPR
 
-**Construction Field Management Web App** — submit and track Daily Progress Reports from any device.
+**Construction Field Management Web App** — submit and track **Daily Progress Reports (DPR)** from any device.
 
 ![React](https://img.shields.io/badge/React-19-blue?logo=react)
 ![Vite](https://img.shields.io/badge/Vite-7-purple?logo=vite)
@@ -9,21 +9,43 @@
 
 ---
 
-## Features
+# 🎬 Project Walkthrough
 
-| Feature | Details |
-|---|---|
-| **Login** | Mock auth with email + password validation |
-| **Project Dashboard** | Card grid with status filter (All / In Progress / Pending / Completed) |
-| **DPR Form** | Project, date, weather, description, worker count, photo upload (1–3 images) |
-| **Dark Mode** | Toggle via navbar — persisted in `localStorage` |
-| **Validation** | Descriptive field-level error messages on all forms |
-| **Responsive** | Mobile-first, works on 375 px → 1440 px+ |
-| **Animations** | Staggered card entrance, hover micro-interactions |
+Want to quickly understand how **ConTrack DPR** works?
+
+Click the thumbnail below to watch the **full implementation demo and explanation.**
+
+<p align="center">
+  <img src="public/image.png" alt="ConTrack DPR Preview" width="900"/>
+</p>
+
+<p align="center">
+  <a href="https://www.loom.com/share/1436857ad422406c960250f9d4bf3841">
+    <img src="https://cdn.loom.com/sessions/thumbnails/1436857ad422406c960250f9d4bf3841-00001.gif" width="750" alt="Watch Loom Walkthrough"/>
+  </a>
+</p>
+
+<p align="center">
+🚀 <strong>Click the preview above to watch the full demo</strong>
+</p>
 
 ---
 
-## Demo credentials
+# ✨ Features
+
+| Feature | Details |
+|---|---|
+| **Login** | Mock authentication with email + password validation |
+| **Project Dashboard** | Card grid with status filter (All / In Progress / Pending / Completed) |
+| **DPR Form** | Project, date, weather, description, worker count, photo upload (1–3 images) |
+| **Dark Mode** | Toggle via navbar — persisted in `localStorage` |
+| **Validation** | Descriptive field-level error messages |
+| **Responsive Design** | Mobile-first layout (375px → 1440px+) |
+| **Animations** | Smooth card entrance and hover interactions |
+
+---
+
+# 🔐 Demo Credentials
 
 ```
 Email:    test@test.com
@@ -32,86 +54,102 @@ Password: 123456
 
 ---
 
-## Quick start
+# ⚡ Quick Start
 
-### 1. Clone
+### 1️⃣ Clone the repository
 
 ```bash
 git clone https://github.com/your-username/ConTrack-DPR.git
 cd ConTrack-DPR
 ```
 
-### 2. Install dependencies
+---
+
+### 2️⃣ Install dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Start dev server
+---
+
+### 3️⃣ Start development server
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+Open in browser:
 
-### Other commands
+```
+http://localhost:5173
+```
+
+---
+
+# 🛠 Available Scripts
 
 | Command | Purpose |
 |---|---|
-| `npm run build` | Production bundle in `dist/` |
-| `npm run preview` | Preview the production build locally |
+| `npm run dev` | Start development server |
+| `npm run build` | Create production build |
+| `npm run preview` | Preview production build locally |
 | `npm run lint` | Run ESLint |
 
 ---
 
-## Project structure
+# 📂 Project Structure
 
 ```
 src/
-├── assets/             # Static assets (logo, etc.)
+├── assets/             
 ├── components/
-│   ├── Navbar.jsx      # Top nav with dark mode toggle + logout
+│   ├── Navbar.jsx
 │   └── ProtectedRoute.jsx
+│
 ├── constants/
-│   └── projects.js     # Project data, statusConfig, weatherOptions
+│   └── projects.js
+│
 ├── context/
-│   ├── AuthContext.jsx  # Login / logout state
-│   └── ThemeContext.jsx # Dark mode toggle (persisted)
+│   ├── AuthContext.jsx
+│   └── ThemeContext.jsx
+│
 ├── pages/
-│   ├── Login.jsx        # Auth screen
-│   ├── ProjectList.jsx  # Dashboard with project cards + filter
-│   └── DPRForm.jsx      # Daily progress report form
+│   ├── Login.jsx
+│   ├── ProjectList.jsx
+│   └── DPRForm.jsx
+│
 ├── utils/
-│   └── validation.js   # validateLogin, validateDPRForm
-├── App.jsx             # Route definitions
-├── index.css           # Tailwind v4 imports + dark variant
+│   └── validation.js
+│
+├── App.jsx
+├── index.css
 └── main.jsx
 ```
 
 ---
 
-## Tech stack
+# 🧰 Tech Stack
 
-| Library | Version | Purpose |
-|---|---|---|
-| React | 19 | UI framework |
-| Vite | 7 | Build tool |
-| Tailwind CSS | 4 | Utility-first styling |
-| React Router | 7 | Client-side routing |
-| Lucide React | latest | Icon set |
-
----
-
-## Known limitations
-
-- Authentication is **mock-based** (no real backend)
-- DPR submissions are **not persisted** (no database)
-- Image uploads generate **local object URLs** — preview only
+| Technology | Purpose |
+|---|---|
+| **React 19** | Frontend framework |
+| **Vite 7** | Fast build tool |
+| **Tailwind CSS 4** | Utility-first styling |
+| **React Router 7** | Client-side routing |
+| **Lucide React** | Icons |
 
 ---
 
-## Author
+# ⚠ Known Limitations
+
+- Authentication is **mock-based**
+- DPR submissions are **not stored in a database**
+- Image uploads create **local preview URLs only**
+
+---
+
+# 👨‍💻 Author
 
 **Om Mhaismale**
 
