@@ -13,20 +13,16 @@
 
 Want to quickly understand how **ConTrack DPR** works?
 
-Click the thumbnail below to watch the **full implementation demo and explanation.**
-
-<p align="center">
-  <img src="public/image.png" alt="ConTrack DPR Preview" width="900"/>
-</p>
+Click the preview below to watch the **full implementation demo and explanation.**
 
 <p align="center">
   <a href="https://www.loom.com/share/1436857ad422406c960250f9d4bf3841">
-    <img src="https://cdn.loom.com/sessions/thumbnails/1436857ad422406c960250f9d4bf3841-00001.gif" width="750" alt="Watch Loom Walkthrough"/>
+    <img src="public/image.png" alt="ConTrack DPR Demo" width="900"/>
   </a>
 </p>
 
 <p align="center">
-🚀 <strong>Click the preview above to watch the full demo</strong>
+🚀 <strong>Click the image above to watch the full walkthrough</strong>
 </p>
 
 ---
